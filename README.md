@@ -40,15 +40,19 @@ While Locust is amazing, managing distributed tests, history, and reporting acro
 
 <!-- Tip: Drag and drop your screenshots here in the GitHub editor -->
 
-### 1. The Command Center
+### 1. Secure Access
+_Password-protected interface ensuring only authorized users can trigger load tests._
+![Login Screen](images/login.png)
+
+### 2. The Command Center
 _Configure multiple users, spawn rates, and target hosts in seconds._
 ![Run Test UI](images/first_page.png)
 
-### 2. Live Insights
+### 3. Live Insights
 _Monitor your swarm with interactive charts and live log streaming._
 ![Dashboard UI](images/second_page.png)
 
-### 3. Historical Analysis
+### 4. Historical Analysis
 _Access execution history and download reports from previous days._
 ![History UI](images/third_page_1.png)
 
