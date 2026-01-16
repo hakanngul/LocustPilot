@@ -1,31 +1,56 @@
-# Locust Web Manager
+<div align="center">
+
+# 🦗 Locust Web Manager
+### The Modern Control Plane for Distributed Load Testing
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.32+-red.svg)](https://streamlit.io/)
 [![Locust](https://img.shields.io/badge/Locust-2.25+-green.svg)](https://locust.io/)
+[![Docker](https://img.shields.io/badge/Docker-Ready-2496ED.svg)](https://www.docker.com/)
 
-A modern, Streamlit-based web interface for managing, executing, and visualizing [Locust](https://locust.io/) load tests with ReportPortal integration.
+**Scale your load tests with ease. Monitor in real-time. Analyze instantly.**
 
-## Features
+[View Demo](#screenshots) • [Get Started](#installation) • [Documentation](#configuration)
 
-- 🧪 **Test Registry**: Browse and select Locust scripts from your repository
-- 🚀 **Execution Control**: Configure user count, spawn rate, and run time directly from UI
-- 📊 **Real-time Monitoring**: Live log streaming and status updates during test execution
-- 📈 **ReportPortal Integration**: Automatically sync test results, logs, and statistics
-- 📋 **Result Management**: Built-in visualization and CSV/HTML report generation
-- ☁️ **Cloud Ready**: Includes Dockerfiles and Helm charts for Kubernetes deployment
+</div>
 
-## Screenshots
+---
 
-### Run Test Tab
-Configure and execute load tests with real-time monitoring.
+## 🚀 Why Locust Web Manager?
 
-### Global Dashboard
-Compare performance metrics across multiple test runs.
+While Locust is amazing, managing distributed tests, history, and reporting across a team can be challenging. **Locust Web Manager** bridges the gap:
 
-### View Reports
-Analyze detailed statistics with interactive charts and export options.
+| Feature | Standard Locust UI | Locust Web Manager |
+|---------|-------------------|-------------------|
+| **Test Registry** | ❌ Manual file selection | ✅ **Dropdown UI** for all test files |
+| **History** | ⚠️ Limited session only | ✅ **Persistent run history** (CSV/HTML) |
+| **Reporting** | ⚠️ Basic HTML download | ✅ **Integrated ReportPortal** & Charts |
+| ** CI/CD** | ❌ API driven | ✅ **Docker/Helm Ready** for K8s |
+
+## ✨ Features
+
+- **🧪 Smart Test Registry**: Automatically scans and lists all your Locust classes. No more command-line arguments.
+- **📊 Real-time Dashboard**: Live streaming of logs, response times, and failure rates.
+- **📝 Persistent History**: Every run is saved. Download past reports, CSVs, and logs anytime.
+- **🔌 ReportPortal Native**: First-class integration with ReportPortal for enterprise-grade analytics.
+- **☁️ Cloud Native**: Pre-configured `Dockerfile` and Helm charts for instant Kubernetes deployment.
+
+## 📸 Screenshots
+
+<!-- Tip: Drag and drop your screenshots here in the GitHub editor -->
+
+### 1. The Command Center
+_Configure multiple users, spawn rates, and target hosts in seconds._
+![Run Test UI](https://via.placeholder.com/800x400?text=Run+Test+Interface+Screenshot)
+
+### 2. Live Insights
+_Monitor your swarm with interactive charts and live log streaming._
+![Dashboard UI](https://via.placeholder.com/800x400?text=Global+Dashboard+Screenshot)
+
+### 3. Historical Analysis
+_Access execution history and download reports from previous days._
+![History UI](https://via.placeholder.com/800x400?text=History+Tab+Screenshot)
 
 ## Prerequisites
 
