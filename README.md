@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🦗 Locust Web Manager
+# 🦗 LocustPilot
 ### The Modern Control Plane for Distributed Load Testing
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -17,11 +17,11 @@
 
 ---
 
-## 🚀 Why Locust Web Manager?
+## 🚀 Why LocustPilot?
 
-While Locust is amazing, managing distributed tests, history, and reporting across a team can be challenging. **Locust Web Manager** bridges the gap:
+While Locust is amazing, managing distributed tests, history, and reporting across a team can be challenging. **LocustPilot** bridges the gap:
 
-| Feature | Standard Locust UI | Locust Web Manager |
+| Feature | Standard Locust UI | LocustPilot |
 |---------|-------------------|-------------------|
 | **Test Registry** | ❌ Manual file selection | ✅ **Dropdown UI** for all test files |
 | **History** | ⚠️ Limited session only | ✅ **Persistent run history** (CSV/HTML) |
