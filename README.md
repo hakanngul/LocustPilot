@@ -42,15 +42,15 @@ While Locust is amazing, managing distributed tests, history, and reporting acro
 
 ### 1. The Command Center
 _Configure multiple users, spawn rates, and target hosts in seconds._
-![Run Test UI](https://via.placeholder.com/800x400?text=Run+Test+Interface+Screenshot)
+![Run Test UI](images/first_page.png)
 
 ### 2. Live Insights
 _Monitor your swarm with interactive charts and live log streaming._
-![Dashboard UI](https://via.placeholder.com/800x400?text=Global+Dashboard+Screenshot)
+![Dashboard UI](images/second_page.png)
 
 ### 3. Historical Analysis
 _Access execution history and download reports from previous days._
-![History UI](https://via.placeholder.com/800x400?text=History+Tab+Screenshot)
+![History UI](images/third_page_1.png)
 
 ## Prerequisites
 
