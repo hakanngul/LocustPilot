@@ -1,0 +1,16 @@
+{{- if .Values.env }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "locust.fullname" . }}-env
+  labels:
+    app.kubernetes.io/name: {{ include "locust.name" . }}
+    helm.sh/chart: {{ include "locust.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+data:
+  {{- range $key, $value := .Values.env }}
+  {{ $key }}: {{ $value | quote }}
+  {{- end }}
+{{- end }}
+

@@ -1,0 +1,51 @@
+image: devopsinfra/docker-terragrunt:aws-ot-latest
+
+definitions:
+  services:
+    docker:
+      memory: 3072
+
+  .aws-login-utility:
+    - &aws-login-utility |
+      export AWS_WEB_IDENTITY_TOKEN_FILE=$(pwd)/web-identity-token
+      echo $BITBUCKET_STEP_OIDC_TOKEN > $(pwd)/web-identity-token
+      export AWS_ROLE_ARN=$UTILITY_BB_DEVOPS_AWS_ROLE_ARN
+      aws sts get-caller-identity   
+
+pipelines:
+  branches:
+    main:
+    - step:
+        name: DEV Loadtest Build and Deploy
+        oidc: true
+        services:
+          - docker
+        script:
+        - *aws-login-utility
+        - aws eks update-kubeconfig --name your-cluster-name --region eu-central-1
+        - curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && chmod +x ./kubectl && mv ./kubectl /usr/local/bin
+        # Install Helm if not available
+        - curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash || helm version
+        # Login to ECR
+        - aws ecr get-login-password --region eu-central-1 | docker login --username your-aws-username --password-stdin your-account.dkr.ecr.region.amazonaws.com
+        # Build and tag Docker image
+        - export IMAGE_TAG=${BITBUCKET_COMMIT:0:7}
+        - export ECR_REPO=your-account.dkr.ecr.region.amazonaws.com/locust-app
+        - docker build -f k8s.Dockerfile -t ${ECR_REPO}:${IMAGE_TAG} -t ${ECR_REPO}:latest .
+        # Push to ECR
+        - docker push ${ECR_REPO}:${IMAGE_TAG}
+        - docker push ${ECR_REPO}:latest
+        # Install/upgrade Helm chart
+        - |
+            helm upgrade --install locust ./helm/locust \
+              --namespace loadtest \
+              --create-namespace \
+              --set image.repository=${ECR_REPO} \
+              --set image.tag=${IMAGE_TAG} \
+              --set extraEnv[0].name=RP_TOKEN --set extraEnv[0].value=$RP_TOKEN \
+              --set extraEnv[1].name=RP_ENDPOINT --set extraEnv[1].value=$RP_ENDPOINT \
+              --set extraEnv[2].name=RP_PROJECT --set extraEnv[2].value=$RP_PROJECT \
+              --set extraEnv[3].name=RP_LAUNCH_NAME --set extraEnv[3].value=$RP_LAUNCH_NAME
+        runs-on:
+        - "docker"
+        - "your-runner-label"

@@ -1,0 +1,13 @@
+# patterns to ignore when packaging helm charts.
+.DS_Store
+*.swp
+*.bak
+*.tmp
+*.orig
+*.lock
+.git/
+.github/
+chart.lock
+requirements.lock
+node_modules/
+

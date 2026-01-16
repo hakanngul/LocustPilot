@@ -1,0 +1,92 @@
+replicaCount: 1
+
+image:
+  repository: your-registry.com/your-org/locust-app
+  tag: latest
+  pullPolicy: IfNotPresent
+  pullSecrets: []
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+env:
+  LOCUST_HOST: https://localhost:8080
+  RUNS_DIR: /data/runs
+  LOCUSTFILES_DIR: /app/locustfiles
+
+extraEnv: []
+
+streamlit:
+  port: 8501
+  args: []
+
+podAnnotations: {}
+
+podLabels: {}
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8501
+
+ingress:
+  enabled: true
+  className: ""
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/backend-protocol: HTTP
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:region:account:certificate/id
+    alb.ingress.kubernetes.io/group.name: locust-app-alb
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/ssl-redirect: "443"
+    alb.ingress.kubernetes.io/scheme: internal
+    alb.ingress.kubernetes.io/subnets: subnet-xxx, subnet-yyy, subnet-zzz
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/healthcheck-path: "/health"
+  hosts:
+    - host: host_name
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: []
+
+resources: {}
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+persistence:
+  enabled: true
+  accessModes:
+    - ReadWriteOnce
+  size: 5Gi
+  storageClass: ""
+  mountPath: /data
+
+livenessProbe:
+  enabled: true
+  path: /
+  initialDelaySeconds: 30
+  periodSeconds: 30
+  timeoutSeconds: 5
+  failureThreshold: 3
+
+readinessProbe:
+  enabled: true
+  path: /
+  initialDelaySeconds: 15
+  periodSeconds: 15
+  timeoutSeconds: 5
+  failureThreshold: 3
+

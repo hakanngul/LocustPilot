@@ -1,0 +1,13 @@
+1. Get the application URL by running these commands:
+{{- if .Values.ingress.enabled }}
+  {{- range $host := .Values.ingress.hosts }}
+  https://{{ $host.host }}
+  {{- end }}
+{{- else if eq .Values.service.type "LoadBalancer" }}
+  export SERVICE_IP=$(kubectl get svc {{ include "locust.fullname" . }} -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+  echo "Streamlit UI available at http://${SERVICE_IP}:{{ .Values.service.port }}"
+{{- else }}
+  kubectl port-forward svc/{{ include "locust.fullname" . }} {{ .Values.streamlit.port }}:{{ .Values.service.port }}
+  echo "Streamlit UI available at http://127.0.0.1:{{ .Values.streamlit.port }}"
+{{- end }}
+
