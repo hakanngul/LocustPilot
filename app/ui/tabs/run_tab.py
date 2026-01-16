@@ -3,8 +3,8 @@ import time
 import json
 from datetime import datetime
 import streamlit as st
-from locust_app.core.config import RUNS_DIR
-from locust_app.core.runner import (
+from app.core.config import RUNS_DIR
+from app.core.runner import (
     which_locust,
     list_locustfiles,
     display_path,
@@ -28,7 +28,7 @@ def render_run_tab(base_dir):
     )
 
     # Defaults from settings
-    from locust_app.core.settings import settings
+    from app.core.settings import settings
     
     default_host = settings.locust_host or "http://localhost:8000" # Locust host might not be in settings, let's check settings definition
     # Wait, settings definition has locust_target_host.

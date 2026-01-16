@@ -1,13 +1,13 @@
 
 import streamlit as st
 
-from locust_app.core.config import BASE_DIR
-from locust_app.ui.tabs.run_tab import render_run_tab
-from locust_app.ui.tabs.reporting_tab import render_reporting_tab
-from locust_app.ui.tabs.dashboard_tab import render_dashboard_tab
-from locust_app.ui.tabs.history_tab import render_history_tab
-from locust_app.ui.tabs.setup_tab import render_setup_tab
-from locust_app.ui.auth import check_password
+from app.core.config import BASE_DIR
+from app.ui.tabs.run_tab import render_run_tab
+from app.ui.tabs.reporting_tab import render_reporting_tab
+from app.ui.tabs.dashboard_tab import render_dashboard_tab
+from app.ui.tabs.history_tab import render_history_tab
+from app.ui.tabs.setup_tab import render_setup_tab
+from app.ui.auth import check_password
 
 def main():
     if not check_password():

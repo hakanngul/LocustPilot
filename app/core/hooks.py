@@ -28,7 +28,7 @@ def on_locust_init(environment, **kwargs):
 
     if rp_endpoint and rp_project and rp_token:
         try:
-            from locust_app.core.rp_listener import ReportPortalListener
+            from app.core.rp_listener import ReportPortalListener
             ReportPortalListener(environment)
             logger.info("✅ ReportPortal Listener initialized")
         except Exception as e:

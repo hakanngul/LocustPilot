@@ -1,6 +1,6 @@
 
 import streamlit as st
-from locust_app.core.data import list_runs
+from app.core.data import list_runs
 
 def render_history_tab():
     st.subheader("History Runs")

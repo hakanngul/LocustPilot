@@ -22,7 +22,7 @@ class ReportPortalListener:
         self.start_time = None
 
         # Load typed settings
-        from locust_app.core.settings import settings
+        from app.core.settings import settings
         self.settings = settings
 
         self.rp_endpoint = settings.rp_endpoint

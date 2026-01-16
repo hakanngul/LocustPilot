@@ -4,10 +4,10 @@ import json
 import streamlit as st
 import streamlit.components.v1 as components
 from datetime import datetime
-from locust_app.core.config import RUNS_DIR
-from locust_app.core.runner import display_path
-from locust_app.core.data import list_runs, load_stats_cached, run_signature, create_run_zip
-from locust_app.ui.charts import render_summary_from_stats, render_time_series
+from app.core.config import RUNS_DIR
+from app.core.runner import display_path
+from app.core.data import list_runs, load_stats_cached, run_signature, create_run_zip
+from app.ui.charts import render_summary_from_stats, render_time_series
 
 def render_reporting_tab(base_dir):
     st.subheader("View Reports")

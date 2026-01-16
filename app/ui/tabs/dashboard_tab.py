@@ -2,7 +2,7 @@
 import json
 import pandas as pd
 import streamlit as st
-from locust_app.core.data import list_runs, load_stats_cached, run_signature
+from app.core.data import list_runs, load_stats_cached, run_signature
 
 def render_dashboard_tab():
     st.subheader("📊 Global Dashboard")
