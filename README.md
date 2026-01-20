@@ -65,8 +65,8 @@ While Locust is amazing, managing distributed tests, history, and reporting acro
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/locust_app.git
-   cd locust_app
+   git clone https://github.com/your-username/LocustPilot.git
+   cd locust_pilot
    ```
 
 2. **Install dependencies:**
@@ -190,7 +190,7 @@ While Locust is amazing, managing distributed tests, history, and reporting acro
 ## Architecture
 
 ```
-locust_app/
+locust_pilot/
 ├── app/
 │   ├── core/                 # Core logic
 │   │   ├── settings.py      # Pydantic settings
